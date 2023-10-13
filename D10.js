@@ -226,27 +226,63 @@ console.log(isTodayMyBirthday(today));
 
 // NOTA: l'array "movies" usato in alcuni esercizi è definito alla fine di questo file
 
-/* ESERCIZIO 11
+/* ESERCIZIO 11😄
   Scrivi una funzione chiamata "deleteProp" che riceve un oggetto e una stringa come parametri; deve ritornare l'oggetto fornito dopo aver eliminato
   in esso la proprietà chiamata come la stringa passata come secondo parametro.
 */
+const myDog = {
+  name: "Luna",
+  color: "grey",
+  "years-old": "6",
+  breed: "Corso",
+};
+console.log(myDog);
+const deleteProp = function (obj, String) {
+  const newObj = { ...obj };
+  delete newObj[String];
+  return newObj;
+};
 
-/* ESERCIZIO 12
+console.log(deleteProp(myDog, "years-old"));
+
+/* ESERCIZIO 12😄
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
+const newestMovie = (array) => {
+  let result = { Year: 1800 };
+  array.forEach((movie) => {
+    let currentYear = parseInt(movie.Year);
+    if (currentYear > result.Year) {
+      result = movie;
+    }
+  });
+  return result;
+};
+// HO CONSOLOGGATO IN FONDO ALLA PAGINA
 
-/* ESERCIZIO 13
+/* ESERCIZIO 13😄
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
 
-/* ESERCIZIO 14
+const countMovies = (array) => array.length;
+
+/* ESERCIZIO 14😄
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
+const onlyTheYears = (array) => {
+  return array.map((element) => element.Year);
+};
 
-/* ESERCIZIO 15
+/* ESERCIZIO 15😄
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
-
+const onlyInLastMillennium = (array) => {
+  return array.filter((movie) => {
+    if (parseInt(movie.Year) < 2000 && parseInt(movie.Year) > 1899) {
+      return parseInt(movie.Year);
+    }
+  });
+};
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
@@ -441,3 +477,15 @@ const movies = [
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
 ];
+
+// ESERCIZIO 12😄
+console.log(newestMovie(movies));
+
+// ESERCIZIO 13😄
+console.log(countMovies(movies));
+
+// ESERCIZIO 14😄
+console.log(onlyTheYears(movies));
+
+// ESERCIZIO 15😄
+console.log(onlyInLastMillennium(movies));
