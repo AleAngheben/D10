@@ -355,7 +355,13 @@ createTdText();
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
-
+const backgroundLink = () => {
+  const links = document.querySelectorAll("a");
+  links.forEach((e) => {
+    e.style = "background-color; red";
+  });
+};
+backgroundLink();
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
@@ -367,12 +373,15 @@ const createNewLi = () => {
   myList.appendChild(newLi);
 };
 createNewLi();
-/* ESERCIZIO 25
+/* ESERCIZIO 25😄
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
-const emptyList = () => {};
-emptyList();
-
+const removeUl = () => {
+  while (myList.firstChild) {
+    myList.removeChild(myList.firstChild);
+  }
+};
+removeUl();
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
