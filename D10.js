@@ -209,7 +209,7 @@ console.log(howManyDays(dataInserita));
 */
 
 const isTodayMyBirthday = function (today) {
-  const myBirthdayDate = new Date("05-05-2023");
+  const myBirthdayDate = new Date("05-05-1999");
   const myBirDay = myBirthdayDate.getDay();
   const myBirMonth = myBirthdayDate.getMonth();
   if (today.getDay() === myBirDay && today.getMonth() === myBirMonth) {
