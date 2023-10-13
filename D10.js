@@ -286,33 +286,71 @@ const onlyInLastMillennium = (array) => {
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
+const sumAllTheYears = (array) => {
+  return array.reduce((tot, acc) => tot + parseInt(acc.Year), 0);
+};
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
 
+const searchByTitle = (array, String) => {
+  return array.find((title) => title[String] === array.Title);
+};
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
 
+const searchAndDivide = (array, String) => {
+  const object = {
+    match: [],
+    unmatch: [],
+  };
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].Title.includes(String)) {
+      object.match.push(array[i]);
+    } else {
+      object.unmatch.push(array[i]);
+    }
+  }
+  return object;
+};
+
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+const removeIndex = (array, n) => {
+  array.splice(n, 1);
+  return array;
+};
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
-
 /* ESERCIZIO 20
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
-
+const createMyTitle = () => document.getElementById("myTitleId");
+const myTitle = createMyTitle();
+console.log(myTitle);
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
-
+const getByTd = () => document.querySelectorAll("td");
+const myTds = getByTd();
+console.log(myTds);
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
+const createTdText = () => {
+  for (let i = 0; i < myTds.length; i++) {
+    const tdText = document.createElement("h3");
+    tdText.innerText = i + 1;
+    myTds[i].appendChild(tdText);
+  }
+};
+
+createTdText();
 
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
@@ -322,14 +360,30 @@ const onlyInLastMillennium = (array) => {
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+const myList = document.getElementById("myList");
+const createNewLi = () => {
+  const newLi = document.createElement("li");
+  newLi.innerText = "new li from JS";
+  myList.appendChild(newLi);
+};
+createNewLi();
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
+const emptyList = () => {};
+emptyList();
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
 
+const addTrClass = () => {
+  const myRows = document.getElementsByTagName("tr");
+  for (let i = 0; i < myRows.length; i++) {
+    myRows[i].classList.add("test");
+  }
+};
+addTrClass();
 // [EXTRA] JS Avanzato
 
 /* ESERCIZIO 27
@@ -489,3 +543,15 @@ console.log(onlyTheYears(movies));
 
 // ESERCIZIO 15😄
 console.log(onlyInLastMillennium(movies));
+
+// ESERCIZIO 16
+console.log(sumAllTheYears(movies));
+
+// ESERCIZIO 17
+console.log(searchByTitle(movies, "Lord of War"));
+
+// ESERCIZIO 18😄
+console.log(searchAndDivide(movies, "Lord"));
+
+// ESERCIZIO 19
+console.log(removeIndex(movies, 0));
